@@ -4250,7 +4250,7 @@ void config(void);
 
 # 1 "./led_patterns.h" 1
 # 13 "main.c" 2
-# 23 "main.c"
+# 24 "main.c"
 const long int sync_cmd = 0x004;
 const long int led_cmd = 0b0010000100;
 const long int anim_cmd = 0x085;
@@ -4300,7 +4300,7 @@ void send_data(long int data )
 void __attribute__((picinterrupt(("")))) int0(void)
 {
     clk_low = 1;
-
+    INTCONbits.INTF=0;
 
 
 }
@@ -4317,7 +4317,7 @@ void main(void) {
 
 
     while(1)
-    {if(PORTCbits.RC1 == 1){
+    {if(PORTCbits.RC1 == 0){
         send_data(sync_cmd);
         _delay((unsigned long)((3000)*(16000000/4000.0)));
         send_data(0b0010100001);

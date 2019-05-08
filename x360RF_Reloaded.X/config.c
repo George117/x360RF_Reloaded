@@ -10,16 +10,17 @@
 #include "config.h"
 #define data_line LATCbits.LATC0
 #define clock_line PORTAbits.RA2
-
+#define button PORTCbits.RC1
 void config()
 {
 
     data_line=1;//set HIGH: no command incoming
     
     OSCCONbits.IRCF0=1;
-    OSCCONbits.IRCF1=1;//4Mhz
+    OSCCONbits.IRCF1=1;//16Mhz
     OSCCONbits.IRCF2=1;
-   // OSCTUNEbits.PLLEN = 0; // turn on the PLL 64 MHz
+    OSCCONbits.IRCF3=1;
+    
     INTCONbits.GIE=0;
 
     ANSELA=0X00;
@@ -32,15 +33,16 @@ void config()
     LATC=0X00;
     
     data_line=1;//set HIGH: no command incoming
- //   INTCON2bits.RBPU=0;//PORTB pull-ups are enabled
- //   WPUBbits.WPUB1=1;//weak pull-up enabled
- //   TRISBbits.RB0=1;///clock_line input 
- //   INTCON2bits.INTEDG0 = 1; //Interrupt on falling edge
+    OPTION_REGbits.nWPUEN=0;//PORTB pull-ups are enabled
+    WPUAbits.WPUA2=1;//weak pull-up enabled
     
+    TRISAbits.TRISA2 = 1;//clock_line input 
+    TRISCbits.TRISC1 = 1;//button input
+    OPTION_REGbits.INTEDG = 1;//Interrupt on falling edge
     __delay_ms(1000);
 
     INTCONbits.GIE = 0;
-   // INTCONbits.INT0IE = 1;
+    INTCONbits.INTE = 1;
 
     
 }

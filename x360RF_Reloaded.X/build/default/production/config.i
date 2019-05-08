@@ -4120,6 +4120,7 @@ void config()
     OSCCONbits.IRCF0=1;
     OSCCONbits.IRCF1=1;
     OSCCONbits.IRCF2=1;
+    OSCCONbits.IRCF3=1;
 
     INTCONbits.GIE=0;
 
@@ -4133,15 +4134,16 @@ void config()
     LATC=0X00;
 
     LATCbits.LATC0=1;
+    OPTION_REGbits.nWPUEN=0;
+    WPUAbits.WPUA2=1;
 
-
-
-
-
+    TRISAbits.TRISA2 = 1;
+    TRISCbits.TRISC1 = 1;
+    OPTION_REGbits.INTEDG = 1;
     _delay((unsigned long)((1000)*(16000000/4000.0)));
 
     INTCONbits.GIE = 0;
-
+    INTCONbits.INTE = 1;
 
 
 }

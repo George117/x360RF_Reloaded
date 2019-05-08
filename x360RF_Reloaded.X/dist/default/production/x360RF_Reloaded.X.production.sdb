@@ -13,11 +13,11 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"30 D:\Git\x360RF_Reloaded\x360RF_Reloaded.X\main.c
+"31 D:\Git\x360RF_Reloaded\x360RF_Reloaded.X\main.c
 [v _send_data send_data `(v  1 e 1 0 ]
-"69
+"70
 [v _int0 int0 `II(v  1 e 1 0 ]
-"77
+"78
 [v _main main `(v  1 e 1 0 ]
 [s S22 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
@@ -52,8 +52,45 @@
 [v _PORTCbits PORTCbits `VES88  1 e 1 @14 ]
 "1108
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
+[s S257 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+]
+"1123
+[u S264 . 1 `S257 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES264  1 e 1 @140 ]
 "1158
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
+[s S274 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+]
+"1173
+[u S281 . 1 `S274 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES281  1 e 1 @142 ]
+[s S203 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1384
+[s S212 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S217 . 1 `S203 1 . 1 0 `S212 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES217  1 e 1 @149 ]
 [s S147 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
@@ -88,31 +125,43 @@
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
 "2782
 [v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
-"27 D:\Git\x360RF_Reloaded\x360RF_Reloaded.X\main.c
+[s S235 . 1 `uc 1 WPUA0 1 0 :1:0 
+`uc 1 WPUA1 1 0 :1:1 
+`uc 1 WPUA2 1 0 :1:2 
+`uc 1 WPUA3 1 0 :1:3 
+`uc 1 WPUA4 1 0 :1:4 
+`uc 1 WPUA5 1 0 :1:5 
+]
+"3303
+[s S242 . 1 `uc 1 WPUA 1 0 :6:0 
+]
+[u S244 . 1 `S235 1 . 1 0 `S242 1 . 1 0 ]
+[v _WPUAbits WPUAbits `VES244  1 e 1 @524 ]
+"28 D:\Git\x360RF_Reloaded\x360RF_Reloaded.X\main.c
 [v _clk_low clk_low `ui  1 e 2 0 ]
-"77
+"78
 [v _main main `(v  1 e 1 0 ]
 {
-"95
+"96
 } 0
-"30
+"31
 [v _send_data send_data `(v  1 e 1 0 ]
 {
-"33
+"34
 [v send_data@temp temp `l  1 a 4 8 ]
-"32
+"33
 [v send_data@i i `i  1 a 2 12 ]
-"30
+"31
 [v send_data@data data `l  1 p 4 0 ]
-"66
+"67
 } 0
 "14 D:\Git\x360RF_Reloaded\x360RF_Reloaded.X\config.c
 [v _config config `(v  1 e 1 0 ]
 {
-"46
+"48
 } 0
-"69 D:\Git\x360RF_Reloaded\x360RF_Reloaded.X\main.c
+"70 D:\Git\x360RF_Reloaded\x360RF_Reloaded.X\main.c
 [v _int0 int0 `II(v  1 e 1 0 ]
 {
-"75
+"76
 } 0

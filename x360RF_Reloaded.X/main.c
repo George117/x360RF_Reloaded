@@ -15,6 +15,7 @@
 #define data_line LATCbits.LATC0
 #define clock_line PORTAbits.RA2
 #define button PORTCbits.RC1
+
 #define low 0
 #define high 1
 #define True 1
@@ -69,7 +70,7 @@ void send_data(long int data )
 void __interrupt() int0(void)
 {
     clk_low = True;
-//    INTCONbits.INT0IF=0;
+    INTCONbits.INTF=0;
     
     
 }
@@ -86,7 +87,7 @@ void main(void) {
     
     
     while(1)
-    {if(button == 1){
+    {if(button == low){
         send_data(sync_cmd);
         __delay_ms(3000);
         send_data(0b0010100001);	

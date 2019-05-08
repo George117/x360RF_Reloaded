@@ -64,6 +64,58 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1990
 [; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1990: extern volatile unsigned char LATC __attribute__((address(0x10E)));
 [v _LATC `Vuc ~T0 @X0 0 e@270 ]
+"1367
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1367:     struct {
+[s S79 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S79 . PS0 PS1 PS2 PSA TMR0SE TMR0CS INTEDG nWPUEN ]
+"1377
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1377:     struct {
+[s S80 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S80 . PS . T0SE T0CS ]
+"1366
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1366: typedef union {
+[u S78 `S79 1 `S80 1 ]
+[n S78 . . . ]
+"1384
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1384: extern volatile OPTION_REGbits_t OPTION_REGbits __attribute__((address(0x095)));
+[v _OPTION_REGbits `VS78 ~T0 @X0 0 e@149 ]
+"3291
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 3291:     struct {
+[s S176 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S176 . WPUA0 WPUA1 WPUA2 WPUA3 WPUA4 WPUA5 ]
+"3299
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 3299:     struct {
+[s S177 :6 `uc 1 ]
+[n S177 . WPUA ]
+"3290
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 3290: typedef union {
+[u S175 `S176 1 `S177 1 ]
+[n S175 . . . ]
+"3303
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 3303: extern volatile WPUAbits_t WPUAbits __attribute__((address(0x20C)));
+[v _WPUAbits `VS175 ~T0 @X0 0 e@524 ]
+"1114
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1114:     struct {
+[s S69 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S69 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 ]
+"1113
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1113: typedef union {
+[u S68 `S69 1 ]
+[n S68 . . ]
+"1123
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1123: extern volatile TRISAbits_t TRISAbits __attribute__((address(0x08C)));
+[v _TRISAbits `VS68 ~T0 @X0 0 e@140 ]
+"1164
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1164:     struct {
+[s S71 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S71 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 ]
+"1163
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1163: typedef union {
+[u S70 `S71 1 ]
+[n S70 . . ]
+"1173
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1173: extern volatile TRISCbits_t TRISCbits __attribute__((address(0x08E)));
+[v _TRISCbits `VS70 ~T0 @X0 0 e@142 ]
 [v F2300 `(v ~T0 @X0 1 tf1`ul ]
 "92 D:\Program Files\Microchip\xc8\v2.05\pic\include\pic.h
 [v __delay `JF2300 ~T0 @X0 0 e ]
@@ -556,43 +608,64 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21
 [; ;config.c: 21:     OSCCONbits.IRCF2=1;
 [e = . . _OSCCONbits 0 5 -> -> 1 `i `uc ]
-"23
-[; ;config.c: 23:     INTCONbits.GIE=0;
+"22
+[; ;config.c: 22:     OSCCONbits.IRCF3=1;
+[e = . . _OSCCONbits 0 6 -> -> 1 `i `uc ]
+"24
+[; ;config.c: 24:     INTCONbits.GIE=0;
 [e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-"25
-[; ;config.c: 25:     ANSELA=0X00;
-[e = _ANSELA -> -> 0 `i `uc ]
 "26
-[; ;config.c: 26:     ANSELC=0X00;
-[e = _ANSELC -> -> 0 `i `uc ]
+[; ;config.c: 26:     ANSELA=0X00;
+[e = _ANSELA -> -> 0 `i `uc ]
 "27
-[; ;config.c: 27:     TRISA=0X00;
-[e = _TRISA -> -> 0 `i `uc ]
+[; ;config.c: 27:     ANSELC=0X00;
+[e = _ANSELC -> -> 0 `i `uc ]
 "28
-[; ;config.c: 28:     TRISC=0X00;
-[e = _TRISC -> -> 0 `i `uc ]
+[; ;config.c: 28:     TRISA=0X00;
+[e = _TRISA -> -> 0 `i `uc ]
 "29
-[; ;config.c: 29:     PORTA=0X00;
-[e = _PORTA -> -> 0 `i `uc ]
+[; ;config.c: 29:     TRISC=0X00;
+[e = _TRISC -> -> 0 `i `uc ]
 "30
-[; ;config.c: 30:     PORTC=0X00;
-[e = _PORTC -> -> 0 `i `uc ]
+[; ;config.c: 30:     PORTA=0X00;
+[e = _PORTA -> -> 0 `i `uc ]
 "31
-[; ;config.c: 31:     LATA=0X00;
-[e = _LATA -> -> 0 `i `uc ]
+[; ;config.c: 31:     PORTC=0X00;
+[e = _PORTC -> -> 0 `i `uc ]
 "32
-[; ;config.c: 32:     LATC=0X00;
+[; ;config.c: 32:     LATA=0X00;
+[e = _LATA -> -> 0 `i `uc ]
+"33
+[; ;config.c: 33:     LATC=0X00;
 [e = _LATC -> -> 0 `i `uc ]
-"34
-[; ;config.c: 34:     LATCbits.LATC0=1;
+"35
+[; ;config.c: 35:     LATCbits.LATC0=1;
 [e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+"36
+[; ;config.c: 36:     OPTION_REGbits.nWPUEN=0;
+[e = . . _OPTION_REGbits 0 7 -> -> 0 `i `uc ]
+"37
+[; ;config.c: 37:     WPUAbits.WPUA2=1;
+[e = . . _WPUAbits 0 2 -> -> 1 `i `uc ]
+"39
+[; ;config.c: 39:     TRISAbits.TRISA2 = 1;
+[e = . . _TRISAbits 0 2 -> -> 1 `i `uc ]
 "40
-[; ;config.c: 40:     _delay((unsigned long)((1000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;config.c: 40:     TRISCbits.TRISC1 = 1;
+[e = . . _TRISCbits 0 1 -> -> 1 `i `uc ]
+"41
+[; ;config.c: 41:     OPTION_REGbits.INTEDG = 1;
+[e = . . _OPTION_REGbits 0 6 -> -> 1 `i `uc ]
 "42
-[; ;config.c: 42:     INTCONbits.GIE = 0;
+[; ;config.c: 42:     _delay((unsigned long)((1000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"44
+[; ;config.c: 44:     INTCONbits.GIE = 0;
 [e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-"46
-[; ;config.c: 46: }
+"45
+[; ;config.c: 45:     INTCONbits.INTE = 1;
+[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
+"48
+[; ;config.c: 48: }
 [e :UE 328 ]
 }
