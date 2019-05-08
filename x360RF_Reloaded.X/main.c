@@ -10,8 +10,11 @@
 #include <stdio.h>
 #include "bit_settings.h"
 #include "config.h"
-#define data_line LATBbits.LATB1
-#define clock_line PORTBbits.RB0
+#include "led_patterns.h"
+
+#define data_line LATCbits.LATC0
+#define clock_line PORTAbits.RA2
+#define button PORTCbits.RC1
 #define low 0
 #define high 1
 #define True 1
@@ -66,7 +69,7 @@ void send_data(long int data )
 void __interrupt() int0(void)
 {
     clk_low = True;
-    INTCONbits.INT0IF=0;
+//    INTCONbits.INT0IF=0;
     
     
 }
@@ -74,12 +77,19 @@ void __interrupt() int0(void)
 void main(void) {
     
     config(); 
-    send_data(0x084);
-    __delay_ms(1000);
-    send_data(0x085);
+    send_data(0x0C0);
+    send_data(0x088);
+    __delay_ms(2000);
+    send_data(anim_cmd);
 
+    __delay_ms(8000);
+    
     
     while(1)
-    {}
+    {if(button == 1){
+        send_data(sync_cmd);
+        __delay_ms(3000);
+        send_data(0b0010100001);	
+    }}
     
  }

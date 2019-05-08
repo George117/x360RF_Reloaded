@@ -1,4 +1,5 @@
 build/default/production/main.p1:  \
 main.c  \
 bit_settings.h  \
-config.h 
+config.h  \
+led_patterns.h 

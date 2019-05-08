@@ -2,16 +2,16 @@
 <project>
   <executable name="dist/default/production\x360RF_Reloaded.X.production.hex">
     <memory name="program">
-      <units>bytes</units>
-      <length>65536</length>
-      <used>456</used>
-      <free>65080</free>
+      <units>words</units>
+      <length>8192</length>
+      <used>258</used>
+      <free>7934</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
-      <length>3896</length>
+      <length>1024</length>
       <used>20</used>
-      <free>3876</free>
+      <free>1004</free>
     </memory>
   </executable>
 </project>
