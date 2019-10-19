@@ -21,7 +21,7 @@
 [v _send_data send_data `(v  1 e 1 0 ]
 "70
 [v _int0 int0 `II(v  1 e 1 0 ]
-"84
+"82
 [v _main main `(v  1 e 1 0 ]
 "31 D:\Git\x360RF_Reloaded\x360RF_Reloaded.X\usart_pic16.c
 [v _USARTInit USARTInit `(v  1 e 1 0 ]
@@ -238,10 +238,10 @@
 [v _clk_low clk_low `ui  1 e 2 0 ]
 "26
 [v _rx_ser rx_ser `uc  1 e 1 0 ]
-"84
+"82
 [v _main main `(v  1 e 1 0 ]
 {
-"122
+"121
 } 0
 "28
 [v _send_data send_data `(v  1 e 1 0 ]
@@ -268,5 +268,5 @@
 "70 D:\Git\x360RF_Reloaded\x360RF_Reloaded.X\main.c
 [v _int0 int0 `II(v  1 e 1 0 ]
 {
-"82
+"80
 } 0

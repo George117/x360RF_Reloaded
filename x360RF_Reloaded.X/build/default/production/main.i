@@ -4299,15 +4299,13 @@ void send_data(long int data )
 
 void __attribute__((picinterrupt(("")))) int0(void)
 {
-    clk_low = 1;
-    INTCONbits.INTF=0;
+    if(INTCONbits.INTF == 1 ){
+        clk_low = 1;
+        INTCONbits.INTF = 0;
+    }
 
     if(RCIF == 1){
         rx_ser = RCREG;
-
-        TXREG=rx_ser;
-
-        RCIF = 0;
     }
 }
 
@@ -4332,6 +4330,7 @@ void main(void) {
     while(1){
 
        send_data(rx_ser);
+       TXREG=rx_ser;
        _delay((unsigned long)((500)*(8000000/4000.0)));
     }
 

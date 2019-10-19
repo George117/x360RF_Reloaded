@@ -69,15 +69,13 @@ void send_data(long int data )
 
 void __interrupt() int0(void)
 {
-    clk_low = True;
-    INTCONbits.INTF=0;
+    if(INTCONbits.INTF == 1 ){
+        clk_low = True;   
+        INTCONbits.INTF = 0;
+    }
     
     if(RCIF == 1){
         rx_ser = RCREG;
-        
-        TXREG=rx_ser;
-        
-        RCIF = 0;
     }
 }
 
@@ -102,6 +100,7 @@ void main(void) {
     while(1){
         
        send_data(rx_ser);
+       TXREG=rx_ser;
        __delay_ms(500);
     }
     

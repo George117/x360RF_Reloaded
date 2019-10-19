@@ -48,14 +48,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3022
 [; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 3022: extern volatile unsigned char RCREG __attribute__((address(0x199)));
 [v _RCREG `Vuc ~T0 @X0 0 e@409 ]
-"3042
-[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 3042: extern volatile unsigned char TXREG __attribute__((address(0x19A)));
-[v _TXREG `Vuc ~T0 @X0 0 e@410 ]
 [p mainexit ]
 "3 ./config.h
 [; ;./config.h: 3: void config(void);
 [v _config `(v ~T0 @X0 0 ef ]
-"485 D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h
+"3042 D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h
+[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 3042: extern volatile unsigned char TXREG __attribute__((address(0x19A)));
+[v _TXREG `Vuc ~T0 @X0 0 e@410 ]
+"485
 [; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 485:     struct {
 [s S36 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S36 . RC0 RC1 RC2 RC3 RC4 RC5 ]
@@ -682,117 +682,122 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _int0 ]
 [f ]
 "72
-[; ;main.c: 72:     clk_low = 1;
-[e = _clk_low -> -> 1 `i `ui ]
+[; ;main.c: 72:     if(INTCONbits.INTF == 1 ){
+[e $ ! == -> . . _INTCONbits 0 1 `i -> 1 `i 342  ]
+{
 "73
-[; ;main.c: 73:     INTCONbits.INTF=0;
+[; ;main.c: 73:         clk_low = 1;
+[e = _clk_low -> -> 1 `i `ui ]
+"74
+[; ;main.c: 74:         INTCONbits.INTF = 0;
 [e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
 "75
-[; ;main.c: 75:     if(RCIF == 1){
-[e $ ! == -> _RCIF `i -> 1 `i 342  ]
-{
-"76
-[; ;main.c: 76:         rx_ser = RCREG;
-[e = _rx_ser -> _RCREG `uc ]
-"78
-[; ;main.c: 78:         TXREG=rx_ser;
-[e = _TXREG -> _rx_ser `uc ]
-"80
-[; ;main.c: 80:         RCIF = 0;
-[e = _RCIF -> -> 0 `i `b ]
-"81
-[; ;main.c: 81:     }
+[; ;main.c: 75:     }
 }
 [e :U 342 ]
-"82
-[; ;main.c: 82: }
+"77
+[; ;main.c: 77:     if(RCIF == 1){
+[e $ ! == -> _RCIF `i -> 1 `i 343  ]
+{
+"78
+[; ;main.c: 78:         rx_ser = RCREG;
+[e = _rx_ser -> _RCREG `uc ]
+"79
+[; ;main.c: 79:     }
+}
+[e :U 343 ]
+"80
+[; ;main.c: 80: }
 [e :UE 341 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"84
-[; ;main.c: 84: void main(void) {
+"82
+[; ;main.c: 82: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"86
-[; ;main.c: 86:     config();
+"84
+[; ;main.c: 84:     config();
 [e ( _config ..  ]
-"88
-[; ;main.c: 88:     send_data(0x0C0);
+"86
+[; ;main.c: 86:     send_data(0x0C0);
 [e ( _send_data (1 -> -> 192 `i `l ]
-"89
-[; ;main.c: 89:     send_data(0x0B0);
+"87
+[; ;main.c: 87:     send_data(0x0B0);
 [e ( _send_data (1 -> -> 176 `i `l ]
+"88
+[; ;main.c: 88:     send_data(0x0A0);
+[e ( _send_data (1 -> -> 160 `i `l ]
 "90
-[; ;main.c: 90:     send_data(0x0A0);
-[e ( _send_data (1 -> -> 160 `i `l ]
-"92
-[; ;main.c: 92:     send_data(0x084);
+[; ;main.c: 90:     send_data(0x084);
 [e ( _send_data (1 -> -> 132 `i `l ]
-"93
-[; ;main.c: 93:     _delay((unsigned long)((1000)*(8000000/4000.0)));
+"91
+[; ;main.c: 91:     _delay((unsigned long)((1000)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"94
-[; ;main.c: 94:     send_data(0x009);
+"92
+[; ;main.c: 92:     send_data(0x009);
 [e ( _send_data (1 -> -> 9 `i `l ]
-"95
-[; ;main.c: 95:     _delay((unsigned long)((2000)*(8000000/4000.0)));
+"93
+[; ;main.c: 93:     _delay((unsigned long)((2000)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"96
-[; ;main.c: 96:     send_data(0x085);
+"94
+[; ;main.c: 94:     send_data(0x085);
 [e ( _send_data (1 -> -> 133 `i `l ]
-"98
-[; ;main.c: 98:     _delay((unsigned long)((5000)*(8000000/4000.0)));
+"96
+[; ;main.c: 96:     _delay((unsigned long)((5000)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"102
-[; ;main.c: 102:     while(1){
-[e :U 345 ]
-{
-"104
-[; ;main.c: 104:        send_data(rx_ser);
-[e ( _send_data (1 -> _rx_ser `l ]
-"105
-[; ;main.c: 105:        _delay((unsigned long)((500)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"106
-[; ;main.c: 106:     }
-}
-[e :U 344 ]
-[e $U 345  ]
+"100
+[; ;main.c: 100:     while(1){
 [e :U 346 ]
-"109
-[; ;main.c: 109:     while(1)
-[e :U 348 ]
-"110
-[; ;main.c: 110:     {if(PORTCbits.RC1 == 0){
 {
-[e $ ! == -> . . _PORTCbits 0 1 `i -> 0 `i 350  ]
-{
-"111
-[; ;main.c: 111:         send_data(0x0A0);
-[e ( _send_data (1 -> -> 160 `i `l ]
-"113
-[; ;main.c: 113:         _delay((unsigned long)((100)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"115
-[; ;main.c: 115:         send_data(0x004);
-[e ( _send_data (1 -> -> 4 `i `l ]
-"117
-[; ;main.c: 117:         _delay((unsigned long)((3000)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"119
-[; ;main.c: 119:         send_data(0x0A1);
-[e ( _send_data (1 -> -> 161 `i `l ]
-"120
-[; ;main.c: 120:     }}
+"102
+[; ;main.c: 102:        send_data(rx_ser);
+[e ( _send_data (1 -> _rx_ser `l ]
+"103
+[; ;main.c: 103:        TXREG=rx_ser;
+[e = _TXREG -> _rx_ser `uc ]
+"104
+[; ;main.c: 104:        _delay((unsigned long)((500)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"105
+[; ;main.c: 105:     }
 }
-[e :U 350 ]
-}
+[e :U 345 ]
+[e $U 346  ]
 [e :U 347 ]
-[e $U 348  ]
+"108
+[; ;main.c: 108:     while(1)
 [e :U 349 ]
-"122
-[; ;main.c: 122:  }
-[e :UE 343 ]
+"109
+[; ;main.c: 109:     {if(PORTCbits.RC1 == 0){
+{
+[e $ ! == -> . . _PORTCbits 0 1 `i -> 0 `i 351  ]
+{
+"110
+[; ;main.c: 110:         send_data(0x0A0);
+[e ( _send_data (1 -> -> 160 `i `l ]
+"112
+[; ;main.c: 112:         _delay((unsigned long)((100)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"114
+[; ;main.c: 114:         send_data(0x004);
+[e ( _send_data (1 -> -> 4 `i `l ]
+"116
+[; ;main.c: 116:         _delay((unsigned long)((3000)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 3000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"118
+[; ;main.c: 118:         send_data(0x0A1);
+[e ( _send_data (1 -> -> 161 `i `l ]
+"119
+[; ;main.c: 119:     }}
+}
+[e :U 351 ]
+}
+[e :U 348 ]
+[e $U 349  ]
+[e :U 350 ]
+"121
+[; ;main.c: 121:  }
+[e :UE 344 ]
 }
