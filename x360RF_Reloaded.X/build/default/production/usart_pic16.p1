@@ -68,24 +68,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1225
 [; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 1225: extern volatile PIE1bits_t PIE1bits __attribute__((address(0x091)));
 [v _PIE1bits `VS72 ~T0 @X0 0 e@145 ]
-"7041
-[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 7041: extern volatile __bit PEIE __attribute__((address(0x5E)));
-[v _PEIE `Vb ~T0 @X0 0 e@94 ]
-"357
-[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 357:     struct {
-[s S31 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S31 . IOCIF INTF TMR0IF IOCIE INTE TMR0IE PEIE GIE ]
-"367
-[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 367:     struct {
-[s S32 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S32 . . T0IF . T0IE ]
-"356
-[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 356: typedef union {
-[u S30 `S31 1 `S32 1 ]
-[n S30 . . . ]
-"374
-[; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 374: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
-[v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
 "535
 [; ;D:\Program Files\Microchip\xc8\v2.05\pic\include\pic16f1825.h: 535:     struct {
 [s S38 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -664,126 +646,120 @@ Version 4.0 HI-TECH Software Intermediate Code
 "73
 [; ;usart_pic16.c: 73:     PIE1bits.RCIE=1;
 [e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
-"74
-[; ;usart_pic16.c: 74:     PEIE=1;
-[e = _PEIE -> -> 1 `i `b ]
 "76
-[; ;usart_pic16.c: 76:     (INTCONbits.GIE = 1);
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"77
-[; ;usart_pic16.c: 77: }
+[; ;usart_pic16.c: 76: }
 [e :UE 328 ]
 }
-"79
-[; ;usart_pic16.c: 79: void USARTWriteChar(char ch)
+"78
+[; ;usart_pic16.c: 78: void USARTWriteChar(char ch)
 [v _USARTWriteChar `(v ~T0 @X0 1 ef1`uc ]
-"80
-[; ;usart_pic16.c: 80: {
+"79
+[; ;usart_pic16.c: 79: {
 {
 [e :U _USARTWriteChar ]
-"79
-[; ;usart_pic16.c: 79: void USARTWriteChar(char ch)
+"78
+[; ;usart_pic16.c: 78: void USARTWriteChar(char ch)
 [v _ch `uc ~T0 @X0 1 r1 ]
-"80
-[; ;usart_pic16.c: 80: {
+"79
+[; ;usart_pic16.c: 79: {
 [f ]
-"81
-[; ;usart_pic16.c: 81:   while(!PIR1bits.TXIF);
+"80
+[; ;usart_pic16.c: 80:   while(!PIR1bits.TXIF);
 [e $U 336  ]
 [e :U 337 ]
 [e :U 336 ]
 [e $ ! != -> . . _PIR1bits 0 4 `i -> 0 `i 337  ]
 [e :U 338 ]
-"83
-[; ;usart_pic16.c: 83:   TXREG=ch;
+"82
+[; ;usart_pic16.c: 82:   TXREG=ch;
 [e = _TXREG -> _ch `uc ]
-"84
-[; ;usart_pic16.c: 84: }
+"83
+[; ;usart_pic16.c: 83: }
 [e :UE 335 ]
 }
-"86
-[; ;usart_pic16.c: 86: void USARTWriteString(const char *str)
+"85
+[; ;usart_pic16.c: 85: void USARTWriteString(const char *str)
 [v _USARTWriteString `(v ~T0 @X0 1 ef1`*Cuc ]
-"87
-[; ;usart_pic16.c: 87: {
+"86
+[; ;usart_pic16.c: 86: {
 {
 [e :U _USARTWriteString ]
-"86
-[; ;usart_pic16.c: 86: void USARTWriteString(const char *str)
+"85
+[; ;usart_pic16.c: 85: void USARTWriteString(const char *str)
 [v _str `*Cuc ~T0 @X0 1 r1 ]
-"87
-[; ;usart_pic16.c: 87: {
+"86
+[; ;usart_pic16.c: 86: {
 [f ]
-"88
-[; ;usart_pic16.c: 88:   while(*str!='\0')
+"87
+[; ;usart_pic16.c: 87:   while(*str!='\0')
 [e $U 340  ]
 [e :U 341 ]
-"89
-[; ;usart_pic16.c: 89:   {
+"88
+[; ;usart_pic16.c: 88:   {
 {
-"90
-[; ;usart_pic16.c: 90:       USARTWriteChar(*str);
+"89
+[; ;usart_pic16.c: 89:       USARTWriteChar(*str);
 [e ( _USARTWriteChar (1 *U _str ]
-"91
-[; ;usart_pic16.c: 91:       str++;
+"90
+[; ;usart_pic16.c: 90:       str++;
 [e ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
-"92
-[; ;usart_pic16.c: 92:   }
+"91
+[; ;usart_pic16.c: 91:   }
 }
 [e :U 340 ]
-"88
-[; ;usart_pic16.c: 88:   while(*str!='\0')
+"87
+[; ;usart_pic16.c: 87:   while(*str!='\0')
 [e $ != -> *U _str `ui -> 0 `ui 341  ]
 [e :U 342 ]
-"93
-[; ;usart_pic16.c: 93: }
+"92
+[; ;usart_pic16.c: 92: }
 [e :UE 339 ]
 }
-"95
-[; ;usart_pic16.c: 95: void USARTWriteLine(const char *str)
+"94
+[; ;usart_pic16.c: 94: void USARTWriteLine(const char *str)
 [v _USARTWriteLine `(v ~T0 @X0 1 ef1`*Cuc ]
-"96
-[; ;usart_pic16.c: 96: {
+"95
+[; ;usart_pic16.c: 95: {
 {
 [e :U _USARTWriteLine ]
-"95
-[; ;usart_pic16.c: 95: void USARTWriteLine(const char *str)
+"94
+[; ;usart_pic16.c: 94: void USARTWriteLine(const char *str)
 [v _str `*Cuc ~T0 @X0 1 r1 ]
-"96
-[; ;usart_pic16.c: 96: {
+"95
+[; ;usart_pic16.c: 95: {
 [f ]
-"97
-[; ;usart_pic16.c: 97:     USARTWriteChar('\r');
+"96
+[; ;usart_pic16.c: 96:     USARTWriteChar('\r');
 [e ( _USARTWriteChar (1 -> -> 13 `ui `uc ]
-"98
-[; ;usart_pic16.c: 98:     USARTWriteChar('\n');
+"97
+[; ;usart_pic16.c: 97:     USARTWriteChar('\n');
 [e ( _USARTWriteChar (1 -> -> 10 `ui `uc ]
-"100
-[; ;usart_pic16.c: 100:     USARTWriteString(str);
+"99
+[; ;usart_pic16.c: 99:     USARTWriteString(str);
 [e ( _USARTWriteString (1 _str ]
-"101
-[; ;usart_pic16.c: 101: }
+"100
+[; ;usart_pic16.c: 100: }
 [e :UE 343 ]
 }
-"103
-[; ;usart_pic16.c: 103: void USARTWriteInt(int16_t val, int8_t field_length)
+"102
+[; ;usart_pic16.c: 102: void USARTWriteInt(int16_t val, int8_t field_length)
 [v _USARTWriteInt `(v ~T0 @X0 1 ef2`s`c ]
-"104
-[; ;usart_pic16.c: 104: {
+"103
+[; ;usart_pic16.c: 103: {
 {
 [e :U _USARTWriteInt ]
-"103
-[; ;usart_pic16.c: 103: void USARTWriteInt(int16_t val, int8_t field_length)
+"102
+[; ;usart_pic16.c: 102: void USARTWriteInt(int16_t val, int8_t field_length)
 [v _val `s ~T0 @X0 1 r1 ]
 [v _field_length `c ~T0 @X0 1 r2 ]
-"104
-[; ;usart_pic16.c: 104: {
+"103
+[; ;usart_pic16.c: 103: {
 [f ]
 [v F2384 `uc ~T0 @X0 -> 5 `i s ]
 [i F2384
 :U ..
-"105
-[; ;usart_pic16.c: 105:     char str[5]={0,0,0,0,0};
+"104
+[; ;usart_pic16.c: 104:     char str[5]={0,0,0,0,0};
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -793,86 +769,86 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 [v _str `uc ~T0 @X0 -> 5 `i a ]
 [e = _str F2384 ]
-"106
-[; ;usart_pic16.c: 106:     int8_t i=4,j=0;
+"105
+[; ;usart_pic16.c: 105:     int8_t i=4,j=0;
 [v _i `c ~T0 @X0 1 a ]
 [e = _i -> -> 4 `i `c ]
 [v _j `c ~T0 @X0 1 a ]
 [e = _j -> -> 0 `i `c ]
-"109
-[; ;usart_pic16.c: 109:     if(val<0)
+"108
+[; ;usart_pic16.c: 108:     if(val<0)
 [e $ ! < -> _val `i -> 0 `i 345  ]
-"110
-[; ;usart_pic16.c: 110:     {
+"109
+[; ;usart_pic16.c: 109:     {
 {
-"111
-[; ;usart_pic16.c: 111:         USARTWriteChar('-');
+"110
+[; ;usart_pic16.c: 110:         USARTWriteChar('-');
 [e ( _USARTWriteChar (1 -> -> 45 `ui `uc ]
-"112
-[; ;usart_pic16.c: 112:         val=val*-1;
+"111
+[; ;usart_pic16.c: 111:         val=val*-1;
 [e = _val -> * -> _val `i -U -> 1 `i `s ]
-"113
-[; ;usart_pic16.c: 113:     }
+"112
+[; ;usart_pic16.c: 112:     }
 }
 [e $U 346  ]
-"114
-[; ;usart_pic16.c: 114:     else
+"113
+[; ;usart_pic16.c: 113:     else
 [e :U 345 ]
-"115
-[; ;usart_pic16.c: 115:     {
+"114
+[; ;usart_pic16.c: 114:     {
 {
-"116
-[; ;usart_pic16.c: 116:         USARTWriteChar(' ');
+"115
+[; ;usart_pic16.c: 115:         USARTWriteChar(' ');
 [e ( _USARTWriteChar (1 -> -> 32 `ui `uc ]
-"117
-[; ;usart_pic16.c: 117:     }
+"116
+[; ;usart_pic16.c: 116:     }
 }
 [e :U 346 ]
-"119
-[; ;usart_pic16.c: 119:     if(val==0 && field_length<1)
+"118
+[; ;usart_pic16.c: 118:     if(val==0 && field_length<1)
 [e $ ! && == -> _val `i -> 0 `i < -> _field_length `i -> 1 `i 347  ]
-"120
-[; ;usart_pic16.c: 120:     {
+"119
+[; ;usart_pic16.c: 119:     {
 {
-"121
-[; ;usart_pic16.c: 121:         USARTWriteChar('0');
+"120
+[; ;usart_pic16.c: 120:         USARTWriteChar('0');
 [e ( _USARTWriteChar (1 -> -> 48 `ui `uc ]
-"122
-[; ;usart_pic16.c: 122:         return;
+"121
+[; ;usart_pic16.c: 121:         return;
 [e $UE 344  ]
-"123
-[; ;usart_pic16.c: 123:     }
+"122
+[; ;usart_pic16.c: 122:     }
 }
 [e :U 347 ]
-"124
-[; ;usart_pic16.c: 124:     while(val)
+"123
+[; ;usart_pic16.c: 123:     while(val)
 [e $U 348  ]
 [e :U 349 ]
-"125
-[; ;usart_pic16.c: 125:     {
+"124
+[; ;usart_pic16.c: 124:     {
 {
-"126
-[; ;usart_pic16.c: 126:         str[i]=val%10;
+"125
+[; ;usart_pic16.c: 125:         str[i]=val%10;
 [e = *U + &U _str * -> -> _i `uc `ux -> -> # *U &U _str `ui `ux -> % -> _val `i -> 10 `i `uc ]
-"127
-[; ;usart_pic16.c: 127:         val=val/10;
+"126
+[; ;usart_pic16.c: 126:         val=val/10;
 [e = _val -> / -> _val `i -> 10 `i `s ]
-"128
-[; ;usart_pic16.c: 128:         i--;
+"127
+[; ;usart_pic16.c: 127:         i--;
 [e -- _i -> -> 1 `i `c ]
-"129
-[; ;usart_pic16.c: 129:     }
+"128
+[; ;usart_pic16.c: 128:     }
 }
 [e :U 348 ]
-"124
-[; ;usart_pic16.c: 124:     while(val)
+"123
+[; ;usart_pic16.c: 123:     while(val)
 [e $ != -> _val `i -> 0 `i 349  ]
 [e :U 350 ]
-"131
-[; ;usart_pic16.c: 131:     if(field_length==-1)
+"130
+[; ;usart_pic16.c: 130:     if(field_length==-1)
 [e $ ! == -> _field_length `i -U -> 1 `i 351  ]
-"132
-[; ;usart_pic16.c: 132:         while(str[j]==0) j++;
+"131
+[; ;usart_pic16.c: 131:         while(str[j]==0) j++;
 [e $U 352  ]
 [e :U 353 ]
 [e ++ _j -> -> 1 `i `c ]
@@ -880,123 +856,123 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ == -> *U + &U _str * -> -> _j `uc `ux -> -> # *U &U _str `ui `ux `i -> 0 `i 353  ]
 [e :U 354 ]
 [e $U 355  ]
-"133
-[; ;usart_pic16.c: 133:     else
+"132
+[; ;usart_pic16.c: 132:     else
 [e :U 351 ]
-"134
-[; ;usart_pic16.c: 134:         j=5-field_length;
+"133
+[; ;usart_pic16.c: 133:         j=5-field_length;
 [e = _j -> - -> 5 `i -> _field_length `i `c ]
 [e :U 355 ]
-"137
-[; ;usart_pic16.c: 137:     for(i=j;i<5;i++)
+"136
+[; ;usart_pic16.c: 136:     for(i=j;i<5;i++)
 {
 [e = _i _j ]
 [e $ < -> _i `i -> 5 `i 356  ]
 [e $U 357  ]
 [e :U 356 ]
-"138
-[; ;usart_pic16.c: 138:     {
+"137
+[; ;usart_pic16.c: 137:     {
 {
-"139
-[; ;usart_pic16.c: 139:         USARTWriteChar('0'+str[i]);
+"138
+[; ;usart_pic16.c: 138:         USARTWriteChar('0'+str[i]);
 [e ( _USARTWriteChar (1 -> + -> 48 `ui -> *U + &U _str * -> -> _i `uc `ux -> -> # *U &U _str `ui `ux `ui `uc ]
-"140
-[; ;usart_pic16.c: 140:     }
+"139
+[; ;usart_pic16.c: 139:     }
 }
 [e ++ _i -> -> 1 `i `c ]
 [e $ < -> _i `i -> 5 `i 356  ]
 [e :U 357 ]
 }
-"141
-[; ;usart_pic16.c: 141: }
+"140
+[; ;usart_pic16.c: 140: }
 [e :UE 344 ]
 }
-"143
-[; ;usart_pic16.c: 143: void USARTGotoNewLine()
+"142
+[; ;usart_pic16.c: 142: void USARTGotoNewLine()
 [v _USARTGotoNewLine `(v ~T0 @X0 1 ef ]
-"144
-[; ;usart_pic16.c: 144: {
+"143
+[; ;usart_pic16.c: 143: {
 {
 [e :U _USARTGotoNewLine ]
 [f ]
-"145
-[; ;usart_pic16.c: 145:     USARTWriteChar('\r');
+"144
+[; ;usart_pic16.c: 144:     USARTWriteChar('\r');
 [e ( _USARTWriteChar (1 -> -> 13 `ui `uc ]
-"146
-[; ;usart_pic16.c: 146:     USARTWriteChar('\n');
+"145
+[; ;usart_pic16.c: 145:     USARTWriteChar('\n');
 [e ( _USARTWriteChar (1 -> -> 10 `ui `uc ]
-"147
-[; ;usart_pic16.c: 147: }
+"146
+[; ;usart_pic16.c: 146: }
 [e :UE 359 ]
 }
-"149
-[; ;usart_pic16.c: 149: void USARTReadBuffer(char *buff,uint16_t len)
+"148
+[; ;usart_pic16.c: 148: void USARTReadBuffer(char *buff,uint16_t len)
 [v _USARTReadBuffer `(v ~T0 @X0 1 ef2`*uc`us ]
-"150
-[; ;usart_pic16.c: 150: {
+"149
+[; ;usart_pic16.c: 149: {
 {
 [e :U _USARTReadBuffer ]
-"149
-[; ;usart_pic16.c: 149: void USARTReadBuffer(char *buff,uint16_t len)
+"148
+[; ;usart_pic16.c: 148: void USARTReadBuffer(char *buff,uint16_t len)
 [v _buff `*uc ~T0 @X0 1 r1 ]
 [v _len `us ~T0 @X0 1 r2 ]
-"150
-[; ;usart_pic16.c: 150: {
+"149
+[; ;usart_pic16.c: 149: {
 [f ]
-"151
-[; ;usart_pic16.c: 151:  uint16_t i;
+"150
+[; ;usart_pic16.c: 150:  uint16_t i;
 [v _i `us ~T0 @X0 1 a ]
-"152
-[; ;usart_pic16.c: 152:  for(i=0;i<len;i++)
+"151
+[; ;usart_pic16.c: 151:  for(i=0;i<len;i++)
 {
 [e = _i -> -> 0 `i `us ]
 [e $U 364  ]
 [e :U 361 ]
-"153
-[; ;usart_pic16.c: 153:  {
+"152
+[; ;usart_pic16.c: 152:  {
 {
-"154
-[; ;usart_pic16.c: 154:   buff[i]=USARTReadData();
+"153
+[; ;usart_pic16.c: 153:   buff[i]=USARTReadData();
 [e = *U + _buff * -> _i `ux -> -> # *U _buff `ui `ux ( _USARTReadData ..  ]
-"155
-[; ;usart_pic16.c: 155:  }
+"154
+[; ;usart_pic16.c: 154:  }
 }
 [e ++ _i -> -> 1 `i `us ]
 [e :U 364 ]
 [e $ < -> _i `ui -> _len `ui 361  ]
 [e :U 362 ]
 }
-"156
-[; ;usart_pic16.c: 156: }
+"155
+[; ;usart_pic16.c: 155: }
 [e :UE 360 ]
 }
-"157
-[; ;usart_pic16.c: 157: void USARTFlushBuffer()
+"156
+[; ;usart_pic16.c: 156: void USARTFlushBuffer()
 [v _USARTFlushBuffer `(v ~T0 @X0 1 ef ]
-"158
-[; ;usart_pic16.c: 158: {
+"157
+[; ;usart_pic16.c: 157: {
 {
 [e :U _USARTFlushBuffer ]
 [f ]
-"159
-[; ;usart_pic16.c: 159:  while(USARTDataAvailable()>0)
+"158
+[; ;usart_pic16.c: 158:  while(USARTDataAvailable()>0)
 [e $U 366  ]
 [e :U 367 ]
-"160
-[; ;usart_pic16.c: 160:  {
+"159
+[; ;usart_pic16.c: 159:  {
 {
-"161
-[; ;usart_pic16.c: 161:   USARTReadData();
+"160
+[; ;usart_pic16.c: 160:   USARTReadData();
 [e ( _USARTReadData ..  ]
-"162
-[; ;usart_pic16.c: 162:  }
+"161
+[; ;usart_pic16.c: 161:  }
 }
 [e :U 366 ]
-"159
-[; ;usart_pic16.c: 159:  while(USARTDataAvailable()>0)
+"158
+[; ;usart_pic16.c: 158:  while(USARTDataAvailable()>0)
 [e $ > -> ( _USARTDataAvailable ..  `i -> 0 `i 367  ]
 [e :U 368 ]
-"163
-[; ;usart_pic16.c: 163: }
+"162
+[; ;usart_pic16.c: 162: }
 [e :UE 365 ]
 }

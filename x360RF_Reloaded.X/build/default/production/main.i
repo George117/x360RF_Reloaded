@@ -4253,14 +4253,15 @@ void config(void);
 # 24 "main.c"
 unsigned int clk_low = 0;
 
-char rx_ser = 0;
+int rx_ser = 0;
+int new_rx = 0;
 
 void send_data(long int data )
 {
     TRISCbits.TRISC0 = 0;
     int i = 0;
     long int temp = 0;
-    INTCONbits.GIE = 1;
+    INTCONbits.INTE =1;
     LATCbits.LATC0 = 0;
 
     _delay((unsigned long)((2)*(8000000/4000.0)));
@@ -4289,7 +4290,7 @@ void send_data(long int data )
     }
 
     clk_low = 0;
-    INTCONbits.GIE = 0;
+    INTCONbits.INTE = 0;
     LATCbits.LATC0 = 1;
 
     TRISCbits.TRISC0 = 1;
@@ -4306,6 +4307,7 @@ void __attribute__((picinterrupt(("")))) int0(void)
 
     if(RCIF == 1){
         rx_ser = RCREG;
+        new_rx = 1;
     }
 }
 
@@ -4324,28 +4326,31 @@ void main(void) {
     send_data(0x085);
 
     _delay((unsigned long)((5000)*(8000000/4000.0)));
-
-
-
+# 109 "main.c"
     while(1){
-
-       send_data(rx_ser);
-       TXREG=rx_ser;
-       _delay((unsigned long)((500)*(8000000/4000.0)));
-    }
+        if(PORTCbits.RC1 == 0){
 
 
-    while(1)
-    {if(PORTCbits.RC1 == 0){
-        send_data(0x0A0);
+
 
         _delay((unsigned long)((100)*(8000000/4000.0)));
 
         send_data(0x004);
+        _delay((unsigned long)((100)*(8000000/4000.0)));
 
-        _delay((unsigned long)((3000)*(8000000/4000.0)));
 
-        send_data(0x0A1);
-    }}
+
+
+
+
+        }
+
+       if(new_rx == 1){
+
+            send_data(rx_ser);
+
+            new_rx = 0;
+        }
+    }
 
  }

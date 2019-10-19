@@ -23,14 +23,15 @@
 
 unsigned int clk_low = False;
 
-char rx_ser = 0;
+int rx_ser = 0;
+int new_rx = 0;
 
 void send_data(long int data )
 {
     TRISCbits.TRISC0 = 0;
     int i = 0;
     long int temp = 0;
-    INTCONbits.GIE = 1;
+    INTCONbits.INTE =1;
     data_line = low;//signal start of command
     
     __delay_ms(2);
@@ -59,7 +60,7 @@ void send_data(long int data )
     }
     
     clk_low = False;
-    INTCONbits.GIE = 0;
+    INTCONbits.INTE = 0;
     data_line = high;
     
     TRISCbits.TRISC0 = 1;
@@ -76,6 +77,7 @@ void __interrupt() int0(void)
     
     if(RCIF == 1){
         rx_ser = RCREG;
+        new_rx = 1;
     }
 }
 
@@ -95,27 +97,39 @@ void main(void) {
 
     __delay_ms(5000);
     
-   
+
+//    while(1){
+//        
+//       send_data(rx_ser);
+//       TXREG=rx_ser;
+//       __delay_ms(500);
+//    }
+    
     
     while(1){
-        
-       send_data(rx_ser);
-       TXREG=rx_ser;
-       __delay_ms(500);
-    }
-    
-    
-    while(1)
-    {if(button == low){
-        send_data(SET_GREEN_LEDS_OFF);
+        if(button == low){
+       // send_data(CLEAR_ERR1);
+       // send_data(LED_INIT);
+       // send_data(SET_GREEN_LEDS_OFF);
         
         __delay_ms(100);
         
         send_data(SYNC);
+        __delay_ms(100);
         
-        __delay_ms(3000);
+
         
-        send_data(SET_GREEN_LED1);	
-    }}
+        
+
+      //  send_data(SET_GREEN_LED1);	
+        }
+        
+       if(new_rx == 1){
+           
+            send_data(rx_ser);
+
+            new_rx = 0; 
+        }
+    }
     
  }

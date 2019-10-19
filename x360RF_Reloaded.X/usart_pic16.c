@@ -71,9 +71,8 @@ void USARTInit(uint16_t baud_rate)
 
     //Receive interrupt
     PIE1bits.RCIE=1;
-    PEIE=1;
 
-    ei();
+    //ei();
 }
 
 void USARTWriteChar(char ch)

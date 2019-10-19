@@ -4255,8 +4255,9 @@ void config()
     OPTION_REGbits.INTEDG = 1;
     _delay((unsigned long)((1000)*(8000000/4000.0)));
 
-    INTCONbits.GIE = 0;
+    INTCONbits.GIE = 1;
     INTCONbits.INTE = 1;
+    INTCONbits.PEIE = 1;
 
 
 

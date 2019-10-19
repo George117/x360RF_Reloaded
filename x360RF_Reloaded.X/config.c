@@ -44,8 +44,9 @@ void config()
     OPTION_REGbits.INTEDG = 1;//Interrupt on falling edge
     __delay_ms(1000);
 
-    INTCONbits.GIE = 0;
+    INTCONbits.GIE = 1;
     INTCONbits.INTE = 1;
+    INTCONbits.PEIE = 1;
     
     
     

@@ -672,15 +672,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;config.c: 45:     _delay((unsigned long)((1000)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "47
-[; ;config.c: 47:     INTCONbits.GIE = 0;
-[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
+[; ;config.c: 47:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "48
 [; ;config.c: 48:     INTCONbits.INTE = 1;
 [e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-"52
-[; ;config.c: 52:     USARTInit(9600);
+"49
+[; ;config.c: 49:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"53
+[; ;config.c: 53:     USARTInit(9600);
 [e ( _USARTInit (1 -> -> 9600 `i `us ]
-"55
-[; ;config.c: 55: }
+"56
+[; ;config.c: 56: }
 [e :UE 328 ]
 }

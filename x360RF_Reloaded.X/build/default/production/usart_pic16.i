@@ -4236,9 +4236,8 @@ void USARTInit(uint16_t baud_rate)
 
 
     PIE1bits.RCIE=1;
-    PEIE=1;
 
-    (INTCONbits.GIE = 1);
+
 }
 
 void USARTWriteChar(char ch)
