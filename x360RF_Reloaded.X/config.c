@@ -8,16 +8,19 @@
 #include <xc.h>
 #include "bit_settings.h"
 #include "config.h"
+#include "usart_pic16.h"
+
 #define data_line LATCbits.LATC0
 #define clock_line PORTAbits.RA2
 #define button PORTCbits.RC1
+
 void config()
 {
 
     data_line=1;//set HIGH: no command incoming
     
-    OSCCONbits.IRCF0=1;
-    OSCCONbits.IRCF1=1;//16Mhz
+    OSCCONbits.IRCF0=0;
+    OSCCONbits.IRCF1=1;//8Mhz
     OSCCONbits.IRCF2=1;
     OSCCONbits.IRCF3=1;
     
@@ -43,6 +46,10 @@ void config()
 
     INTCONbits.GIE = 0;
     INTCONbits.INTE = 1;
+    
+    
+    
+    USARTInit(9600);
 
     
 }

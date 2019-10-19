@@ -21,15 +21,13 @@
 #define True 1
 #define False 0
 
-const long int sync_cmd = 0x004;
-const long int led_cmd = 0b0010000100;
-const long int anim_cmd = 0x085;
-
 unsigned int clk_low = False;
 
+char rx_ser = 0;
 
 void send_data(long int data )
 {
+    TRISCbits.TRISC0 = 0;
     int i = 0;
     long int temp = 0;
     INTCONbits.GIE = 1;
@@ -64,6 +62,8 @@ void send_data(long int data )
     INTCONbits.GIE = 0;
     data_line = high;
     
+    TRISCbits.TRISC0 = 1;
+    
 }
 
 
@@ -72,25 +72,51 @@ void __interrupt() int0(void)
     clk_low = True;
     INTCONbits.INTF=0;
     
-    
+    if(RCIF == 1){
+        rx_ser = RCREG;
+        
+        TXREG=rx_ser;
+        
+        RCIF = 0;
+    }
 }
 
 void main(void) {
     
     config(); 
-    send_data(0x0C0);
-    send_data(0x088);
+    
+    send_data(CLEAR_ERR1);
+    send_data(SET_RED_LEDS_OFF);
+    send_data(SET_GREEN_LEDS_OFF);
+    
+    send_data(LED_INIT);
+    __delay_ms(1000);
+    send_data(CTRLR_OFF);
     __delay_ms(2000);
-    send_data(anim_cmd);
+    send_data(BOOTANIM);
 
-    __delay_ms(8000);
+    __delay_ms(5000);
+    
+   
+    
+    while(1){
+        
+       send_data(rx_ser);
+       __delay_ms(500);
+    }
     
     
     while(1)
     {if(button == low){
-        send_data(sync_cmd);
+        send_data(SET_GREEN_LEDS_OFF);
+        
+        __delay_ms(100);
+        
+        send_data(SYNC);
+        
         __delay_ms(3000);
-        send_data(0b0010100001);	
+        
+        send_data(SET_GREEN_LED1);	
     }}
     
  }

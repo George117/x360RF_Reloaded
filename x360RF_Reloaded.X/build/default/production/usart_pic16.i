@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "usart_pic16.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,15 +6,113 @@
 # 1 "<built-in>" 2
 # 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "usart_pic16.c" 2
+# 26 "usart_pic16.c"
+# 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 1 3
+
+
+
+# 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\musl_xc8.h" 1 3
+# 4 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
+# 22 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 3
+# 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 135 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 150 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 166 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+
+
+
+
+typedef __int24 int24_t;
+
+
+
+
+typedef long int32_t;
 
 
 
 
 
+typedef long long int64_t;
+# 196 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long intmax_t;
 
 
 
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 237 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 22 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 155 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 3
+# 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 155 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
+# 27 "usart_pic16.c" 2
 # 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 1 3
 # 18 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -28,17 +126,7 @@ extern double __fpnormalize(double);
 
 
 # 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdlib.h" 1 3
-
-
-
-# 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\musl_xc8.h" 1 3
-# 4 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdlib.h" 2 3
-
-
-
-
-
-
+# 10 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdlib.h" 3
 # 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\features.h" 1 3
 # 10 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdlib.h" 2 3
 # 21 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdlib.h" 3
@@ -47,10 +135,6 @@ extern double __fpnormalize(double);
 typedef long int wchar_t;
 # 127 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
 typedef unsigned size_t;
-# 176 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 212 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __uint24 uint24_t;
 # 21 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdlib.h" 2 3
 
 
@@ -4081,272 +4165,164 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 9 "main.c" 2
+# 28 "usart_pic16.c" 2
 
-# 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdio.h" 1 3
-# 24 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdio.h" 3
-# 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 10 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef void * va_list[1];
+# 1 "./usart_pic16.h" 1
+# 38 "./usart_pic16.h"
+volatile char URBuff[64];
+volatile int8_t UQFront;
+volatile int8_t UQEnd;
 
-
-
-
-typedef void * __isoc_va_list[1];
-# 145 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long ssize_t;
-# 254 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long off_t;
-# 407 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef struct _IO_FILE FILE;
-# 24 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdio.h" 2 3
-# 52 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdio.h" 3
-typedef union _G_fpos64_t {
- char __opaque[16];
- double __align;
-} fpos_t;
-
-extern FILE *const stdin;
-extern FILE *const stdout;
-extern FILE *const stderr;
+void USARTInit(uint16_t baud_rate);
+void USARTWriteChar(char ch);
+void USARTWriteString(const char *str);
+void USARTWriteLine(const char *str);
+void USARTWriteInt(int16_t val, int8_t field_length);
+void USARTHandleRxInt();
+char USARTReadData();
+uint8_t USARTDataAvailable();
+void USARTGotoNewLine();
+void USARTReadBuffer(char *buff,uint16_t len);
+void USARTFlushBuffer();
 
 
+void USART2Init(uint16_t baud_rate);
+void USART2WriteChar(char ch);
+void USART2WriteString(const char *str);
+void USART2GotoNewLine();
+void USART2WriteInt(int16_t val, int8_t field_length);
+# 30 "usart_pic16.c" 2
 
-
-
-FILE *fopen(const char *restrict, const char *restrict);
-FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
-int fclose(FILE *);
-
-int remove(const char *);
-int rename(const char *, const char *);
-
-int feof(FILE *);
-int ferror(FILE *);
-int fflush(FILE *);
-void clearerr(FILE *);
-
-int fseek(FILE *, long, int);
-long ftell(FILE *);
-void rewind(FILE *);
-
-int fgetpos(FILE *restrict, fpos_t *restrict);
-int fsetpos(FILE *, const fpos_t *);
-
-size_t fread(void *restrict, size_t, size_t, FILE *restrict);
-size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
-
-int fgetc(FILE *);
-int getc(FILE *);
-int getchar(void);
-int ungetc(int, FILE *);
-
-int fputc(int, FILE *);
-int putc(int, FILE *);
-int putchar(int);
-
-char *fgets(char *restrict, int, FILE *restrict);
-
-char *gets(char *);
-
-
-int fputs(const char *restrict, FILE *restrict);
-int puts(const char *);
-
-
-#pragma printf_check(printf) const
-#pragma printf_check(vprintf) const
-#pragma printf_check(sprintf) const
-#pragma printf_check(snprintf) const
-#pragma printf_check(vsprintf) const
-#pragma printf_check(vsnprintf) const
-
-
-int printf(const char *restrict, ...);
-int fprintf(FILE *restrict, const char *restrict, ...);
-int sprintf(char *restrict, const char *restrict, ...);
-int snprintf(char *restrict, size_t, const char *restrict, ...);
-
-int vprintf(const char *restrict, __isoc_va_list);
-int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
-int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
-int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
-
-int scanf(const char *restrict, ...);
-int fscanf(FILE *restrict, const char *restrict, ...);
-int sscanf(const char *restrict, const char *restrict, ...);
-int vscanf(const char *restrict, __isoc_va_list);
-int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
-int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
-
-void perror(const char *);
-
-int setvbuf(FILE *restrict, char *restrict, int, size_t);
-void setbuf(FILE *restrict, char *restrict);
-
-char *tmpnam(char *);
-FILE *tmpfile(void);
-
-
-
-
-FILE *fmemopen(void *restrict, size_t, const char *restrict);
-FILE *open_memstream(char **, size_t *);
-FILE *fdopen(int, const char *);
-FILE *popen(const char *, const char *);
-int pclose(FILE *);
-int fileno(FILE *);
-int fseeko(FILE *, off_t, int);
-off_t ftello(FILE *);
-int dprintf(int, const char *restrict, ...);
-int vdprintf(int, const char *restrict, __isoc_va_list);
-void flockfile(FILE *);
-int ftrylockfile(FILE *);
-void funlockfile(FILE *);
-int getc_unlocked(FILE *);
-int getchar_unlocked(void);
-int putc_unlocked(int, FILE *);
-int putchar_unlocked(int);
-ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
-ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
-int renameat(int, const char *, int, const char *);
-char *ctermid(char *);
-
-
-
-
-
-
-
-char *tempnam(const char *, const char *);
-# 10 "main.c" 2
-
-# 1 "./bit_settings.h" 1
-# 12 "./bit_settings.h"
-#pragma config FOSC = INTOSC
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = ON
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config CLKOUTEN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-
-
-#pragma config WRT = OFF
-#pragma config PLLEN = OFF
-#pragma config STVREN = OFF
-#pragma config BORV = LO
-#pragma config LVP = ON
-# 11 "main.c" 2
-
-# 1 "./config.h" 1
-
-
-void config(void);
-# 12 "main.c" 2
-
-# 1 "./led_patterns.h" 1
-# 13 "main.c" 2
-# 24 "main.c"
-unsigned int clk_low = 0;
-
-char rx_ser = 0;
-
-void send_data(long int data )
+void USARTInit(uint16_t baud_rate)
 {
-    TRISCbits.TRISC0 = 0;
-    int i = 0;
-    long int temp = 0;
-    INTCONbits.GIE = 1;
-    LATCbits.LATC0 = 0;
+    APFCON0bits.RXDTSEL = 0;
+    APFCON0bits.TXCKSEL = 0;
 
-    _delay((unsigned long)((2)*(8000000/4000.0)));
+    TRISCbits.TRISC4 = 0;
+    TRISCbits.TRISC5 = 1;
 
-    for(i=0;i<11;i++)
+    UQFront=UQEnd=-1;
+
+
+    switch(baud_rate)
     {
-        while(clk_low == 0){}
-
-        if(i == 10)
-        {
-            LATCbits.LATC0 = 1;
-        }
-        else{
-            temp = (data >> (9-i)) & 0x01;
-            if(temp == 1)
-            {
-                LATCbits.LATC0 = 1;
-            }
-            else{
-                LATCbits.LATC0 = 0;
-            }
-
-            clk_low = 0;
-        }
-
+     case 9600:
+        SPBRG=12;
+        break;
+     case 19200:
+        SPBRG=64;
+        break;
+     case 28800:
+        SPBRG=42;
+        break;
+     case 33600:
+        SPBRG=36;
+        break;
     }
 
-    clk_low = 0;
-    INTCONbits.GIE = 0;
-    LATCbits.LATC0 = 1;
+    TXSTAbits.TX9=0;
+    TXSTAbits.TXEN=1;
+    TXSTAbits.SYNC=0;
+    TXSTAbits.BRGH=0;
 
-    TRISCbits.TRISC0 = 1;
+    BAUDCONbits.BRG16 = 0;
 
+
+    RCSTAbits.SPEN=1;
+    RCSTAbits.RX9=0;
+    RCSTAbits.CREN=1;
+    RCSTAbits.ADDEN=0;
+
+
+
+    PIE1bits.RCIE=1;
+    PEIE=1;
+
+    (INTCONbits.GIE = 1);
 }
 
-
-void __attribute__((picinterrupt(("")))) int0(void)
+void USARTWriteChar(char ch)
 {
-    clk_low = 1;
-    INTCONbits.INTF=0;
+  while(!PIR1bits.TXIF);
 
-    if(RCIF == 1){
-        rx_ser = RCREG;
+  TXREG=ch;
+}
 
-        TXREG=rx_ser;
+void USARTWriteString(const char *str)
+{
+  while(*str!='\0')
+  {
+      USARTWriteChar(*str);
+      str++;
+  }
+}
 
-        RCIF = 0;
+void USARTWriteLine(const char *str)
+{
+    USARTWriteChar('\r');
+    USARTWriteChar('\n');
+
+    USARTWriteString(str);
+}
+
+void USARTWriteInt(int16_t val, int8_t field_length)
+{
+    char str[5]={0,0,0,0,0};
+    int8_t i=4,j=0;
+
+
+    if(val<0)
+    {
+        USARTWriteChar('-');
+        val=val*-1;
+    }
+    else
+    {
+        USARTWriteChar(' ');
+    }
+
+    if(val==0 && field_length<1)
+    {
+        USARTWriteChar('0');
+        return;
+    }
+    while(val)
+    {
+        str[i]=val%10;
+        val=val/10;
+        i--;
+    }
+
+    if(field_length==-1)
+        while(str[j]==0) j++;
+    else
+        j=5-field_length;
+
+
+    for(i=j;i<5;i++)
+    {
+        USARTWriteChar('0'+str[i]);
     }
 }
 
-void main(void) {
+void USARTGotoNewLine()
+{
+    USARTWriteChar('\r');
+    USARTWriteChar('\n');
+}
 
-    config();
-
-    send_data(0x0C0);
-    send_data(0x0B0);
-    send_data(0x0A0);
-
-    send_data(0x084);
-    _delay((unsigned long)((1000)*(8000000/4000.0)));
-    send_data(0x009);
-    _delay((unsigned long)((2000)*(8000000/4000.0)));
-    send_data(0x085);
-
-    _delay((unsigned long)((5000)*(8000000/4000.0)));
-
-
-
-    while(1){
-
-       send_data(rx_ser);
-       _delay((unsigned long)((500)*(8000000/4000.0)));
-    }
-
-
-    while(1)
-    {if(PORTCbits.RC1 == 0){
-        send_data(0x0A0);
-
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-
-        send_data(0x004);
-
-        _delay((unsigned long)((3000)*(8000000/4000.0)));
-
-        send_data(0x0A1);
-    }}
-
+void USARTReadBuffer(char *buff,uint16_t len)
+{
+ uint16_t i;
+ for(i=0;i<len;i++)
+ {
+  buff[i]=USARTReadData();
  }
+}
+void USARTFlushBuffer()
+{
+ while(USARTDataAvailable()>0)
+ {
+  USARTReadData();
+ }
+}

@@ -43,23 +43,39 @@
 #define  BOOTANIM_NOPWR     0x089      //Same as BOOTANIM but does not turn on power LED?
 #define  LED_INIT_BLPWR     0x088      //Same as LED_INIT and blinks the power LED
 #define  BOOTANIM_BLPWR     0x089      //Same as BOOTANIM and blinks the power LED
-#define  SET_GREEN_LEDS     0x0AX      //Sets the four green LEDs on or off (four least significant bits encode green led value)
-#define  SET_RED_LEDS	  	0x0BX      //Sets the four red LEDs on or off (same as SET_GREEN_LEDS but independent of it)
+
+//#define  SET_GREEN_LEDS   0x0AX      //Sets the four green LEDs on or off (four least significant bits encode green led value)
+#define  SET_GREEN_LEDS_OFF 0x0A0      //Sets the four green LEDs on or off (four least significant bits encode green led value)
+#define  SET_GREEN_LED1     0x0A1      //Sets the four green LEDs on or off (four least significant bits encode green led value)
+#define  SET_GREEN_LED2     0x0A2      //Sets the four green LEDs on or off (four least significant bits encode green led value)
+#define  SET_GREEN_LED3     0x0A4      //Sets the four green LEDs on or off (four least significant bits encode green led value)
+#define  SET_GREEN_LED4     0x0A8      //Sets the four green LEDs on or off (four least significant bits encode green led value)
+
+//#define  SET_RED_LEDS	  	0x0BX      //Sets the four red LEDs on or off (same as SET_GREEN_LEDS but independent of it)
+#define  SET_RED_LEDS_OFF  	0x0B0      //Sets the four red LEDs on or off (same as SET_GREEN_LEDS but independent of it)
+#define  SET_RED_LED1	  	0x0B1      //Sets the four red LEDs on or off (same as SET_GREEN_LEDS but independent of it)
+#define  SET_RED_LED2	  	0x0B2      //Sets the four red LEDs on or off (same as SET_GREEN_LEDS but independent of it)
+#define  SET_RED_LED3	  	0x0B4      //Sets the four red LEDs on or off (same as SET_GREEN_LEDS but independent of it)
+#define  SET_RED_LED4	  	0x0B8      //Sets the four red LEDs on or off (same as SET_GREEN_LEDS but independent of it)
+
 #define  CLEAR_ERR1   	  	0x0C0      //Clears any error display (blinking red leds or orange solid)
 #define  SLOW_BLINK_ALL     0x0C1      //Blinks all four red LEDs
 #define  SLOW_BLINK_1	  	0x0C2      //Blinks top left red LED
 #define  SLOW_BLINK_2	  	0x0C3      //Blinks top right red LED
 #define  SLOW_BLINK_3	  	0x0C4      //Blinks bottom right red LED
 #define  SLOW_BLINK_4	  	0x0C5      //Blinks top left red LED
+
 #define  CLEAR_ERR2	    	0x0D0      //Clears any error display (blinking red leds or orange solid)
 #define  FAST_BLINK_ALL     0x0D1      //Blinks all four red LEDs
 #define  FAST_BLINK_1	  	0x0D2      //Blinks top left red LED
 #define  FAST_BLINK_2	  	0x0D3      //Blinks top right red LED
 #define  FAST_BLINK_3	  	0x0D4      //Blinks bottom right red LED
 #define  FAST_BLINK_4	  	0x0D5      //Blinks top left red LED
+
 #define  CLEAR_ERR3 	  	0x0E0      //Clears any error display (blinking red leds or orange solid)
 #define  LED_AMBER	  	    0x0E1      //Sets all leds to amber colour
 
+#define  RROD               0x0CD           
 
 
 #endif	/* XC_LED_PATTERNS_H */

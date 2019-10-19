@@ -4087,7 +4087,7 @@ extern __bank0 __bit __timeout;
 #pragma config FOSC = INTOSC
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
+#pragma config MCLRE = ON
 #pragma config CP = OFF
 #pragma config CPD = OFF
 #pragma config BOREN = OFF
@@ -4109,6 +4109,119 @@ extern __bank0 __bit __timeout;
 void config(void);
 # 10 "config.c" 2
 
+# 1 "./usart_pic16.h" 1
+# 28 "./usart_pic16.h"
+# 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 1 3
+# 22 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 3
+# 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 135 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 150 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long intptr_t;
+# 166 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+# 181 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 196 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 217 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 237 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 22 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
+
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 155 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 3
+# 1 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 155 "D:\\Program Files\\Microchip\\xc8\\v2.05\\pic\\include\\c99\\stdint.h" 2 3
+# 29 "./usart_pic16.h" 2
+# 38 "./usart_pic16.h"
+volatile char URBuff[64];
+volatile int8_t UQFront;
+volatile int8_t UQEnd;
+
+void USARTInit(uint16_t baud_rate);
+void USARTWriteChar(char ch);
+void USARTWriteString(const char *str);
+void USARTWriteLine(const char *str);
+void USARTWriteInt(int16_t val, int8_t field_length);
+void USARTHandleRxInt();
+char USARTReadData();
+uint8_t USARTDataAvailable();
+void USARTGotoNewLine();
+void USARTReadBuffer(char *buff,uint16_t len);
+void USARTFlushBuffer();
+
+
+void USART2Init(uint16_t baud_rate);
+void USART2WriteChar(char ch);
+void USART2WriteString(const char *str);
+void USART2GotoNewLine();
+void USART2WriteInt(int16_t val, int8_t field_length);
+# 11 "config.c" 2
+
+
+
 
 
 
@@ -4117,7 +4230,7 @@ void config()
 
     LATCbits.LATC0=1;
 
-    OSCCONbits.IRCF0=1;
+    OSCCONbits.IRCF0=0;
     OSCCONbits.IRCF1=1;
     OSCCONbits.IRCF2=1;
     OSCCONbits.IRCF3=1;
@@ -4140,10 +4253,14 @@ void config()
     TRISAbits.TRISA2 = 1;
     TRISCbits.TRISC1 = 1;
     OPTION_REGbits.INTEDG = 1;
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
+    _delay((unsigned long)((1000)*(8000000/4000.0)));
 
     INTCONbits.GIE = 0;
     INTCONbits.INTE = 1;
+
+
+
+    USARTInit(9600);
 
 
 }
